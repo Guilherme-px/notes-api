@@ -8,9 +8,9 @@
         }
     },
     "lint-staged": {
-        "*.ts": [
+        "**/*.ts": [
             "npm run lint --fix",
-            "npm run test"
+            "jest --bail --findRelatedTests"
         ]
     },
     "scripts": {
