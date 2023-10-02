@@ -26,5 +26,29 @@ describe('NoteController', () => {
                 message: 'Nota criada com sucesso!',
             });
         });
+
+        it('should handle errors and return an error response if title is null', async () => {
+            const response = await request(app)
+                .post(`/notes`)
+                .send({ ...note1, title: '' });
+
+            expect(response.status).toBe(400);
+            expect(response.body).toHaveProperty('message');
+            expect(response.body.message).toBe(
+                'Informe um titulo para a nota!'
+            );
+        });
+
+        it('should handle errors and return an error response if description is null', async () => {
+            const response = await request(app)
+                .post(`/notes`)
+                .send({ ...note1, description: '' });
+
+            expect(response.status).toBe(400);
+            expect(response.body).toHaveProperty('message');
+            expect(response.body.message).toBe(
+                'Informe uma descrição para a nota!'
+            );
+        });
     });
 });
