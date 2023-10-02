@@ -19,7 +19,7 @@ describe('NoteController', () => {
 
     describe('createNoteController', () => {
         it('should create a new note', async () => {
-            const response = await request(app).post(`/notes`).send(note1);
+            const response = await request(app).post('/notes').send(note1);
 
             expect(response.status).toBe(201);
             expect(response.body).toEqual({

@@ -4,7 +4,7 @@ import { INotesRepository } from '../repositories/INotesRepository';
 const getAllNotesService = async (notesRepository: INotesRepository) => {
     const notes = await notesRepository.getAll();
 
-    if (!notes) {
+    if (!notes || notes.length === 0) {
         throw new AppError('Nenhuma nota encontrada!', 404);
     }
 
