@@ -7,6 +7,13 @@ const note1: NotesDTO = {
     is_favorite: false,
 };
 
+const note2: NotesDTO = {
+    title: 'Titulo da nota',
+    description: 'descrição da nota',
+    color: 'roxo',
+    is_favorite: false,
+};
+
 const invalidNote: NotesDTO = {
     title: '',
     description: '',
@@ -14,4 +21,4 @@ const invalidNote: NotesDTO = {
     is_favorite: false,
 };
 
-export { note1, invalidNote };
+export { note1, note2, invalidNote };
