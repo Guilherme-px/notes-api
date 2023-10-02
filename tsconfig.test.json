@@ -1,0 +1,10 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@prisma/*": ["prisma/*"]
+        }
+    },
+    "include": ["src/**/*.test.ts"]
+}
