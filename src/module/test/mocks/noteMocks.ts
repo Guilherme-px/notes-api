@@ -1,9 +1,15 @@
 import { NotesDTO } from '../../notes/dtos/NotesDTOs';
 
 const note1: NotesDTO = {
-    title: 'Nome da Empresa 1',
-    description: 'empresa1@example.com',
-    color: '12345678901234',
+    title: 'Titulo da nota',
+    description: 'descrição da nota',
+    color: 'verde',
 };
 
-export { note1 };
+const invalidNote: NotesDTO = {
+    title: '',
+    description: '',
+    color: '',
+};
+
+export { note1, invalidNote };
