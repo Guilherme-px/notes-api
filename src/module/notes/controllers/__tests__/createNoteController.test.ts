@@ -5,7 +5,7 @@ import { NotesRepository } from '../../repositories/NotesRepository';
 import { note1 } from '../../../test/mocks/noteMocks';
 
 describe('NoteController', () => {
-    beforeAll(async () => {
+    beforeEach(async () => {
         new NotesRepository(prismaTest);
     });
 

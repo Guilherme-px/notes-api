@@ -15,7 +15,9 @@ const getAllNotesController = async (
         return res.status(200).json(notes);
     } catch (error) {
         if (error instanceof AppError) {
-            res.status(error.statusCode).json({ message: error.message });
+            return res
+                .status(error.statusCode)
+                .json({ message: error.message });
         } else {
             next(error);
         }

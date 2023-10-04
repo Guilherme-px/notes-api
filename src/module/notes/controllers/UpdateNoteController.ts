@@ -1,19 +1,22 @@
 import { NextFunction, Request, Response } from 'express';
-import { createNoteService } from '../services/CreateNoteService';
 import { NotesRepository } from '../repositories/NotesRepository';
+import { updateNoteService } from '../services/UpdateNoteService';
 import { AppError } from '../../../shared/errors/AppError';
 
-const createNoteController = async (
+const updateNoteController = async (
     req: Request,
     res: Response,
     next: NextFunction
 ) => {
+    const id = req.params.id;
     const note = { ...req.body };
 
     const notesRepository = new NotesRepository();
     try {
-        await createNoteService(note, notesRepository);
-        return res.status(201).json({ message: 'Nota criada com sucesso!' });
+        await updateNoteService(note, id, notesRepository);
+        return res
+            .status(200)
+            .json({ message: 'Nota atualizada com sucesso!' });
     } catch (error) {
         if (error instanceof AppError) {
             return res
@@ -25,4 +28,4 @@ const createNoteController = async (
     }
 };
 
-export { createNoteController };
+export { updateNoteController };

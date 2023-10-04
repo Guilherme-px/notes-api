@@ -43,7 +43,7 @@ describe('getAllNotesService', () => {
         } catch (error) {
             const appError = error as AppErrorType;
             expect(appError).toBeInstanceOf(AppError);
-            expect(appError.message).toBe('Nenhuma nota encontrada!');
+            expect(appError.message).toBe('Nota não encontrada!');
             expect(appError.statusCode).toBe(404);
         }
     });

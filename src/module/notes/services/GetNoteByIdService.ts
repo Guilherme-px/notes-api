@@ -8,7 +8,7 @@ const getNoteByIdService = async (
     const note = await notesRepository.getById(id);
 
     if (!note) {
-        throw new AppError('Nenhuma nota encontrada!', 404);
+        throw new AppError('Nota não encontrada!', 404);
     }
 
     return note;

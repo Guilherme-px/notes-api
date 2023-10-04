@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { INotesRepository } from './INotesRepository';
 import { NotesDTO } from '../dtos/NotesDTOs';
 import { Notes } from '../domain/Notes';
+import { AppError } from '../../../shared/errors/AppError';
 
 class NotesRepository implements INotesRepository {
     private readonly prisma: PrismaClient;
@@ -34,12 +35,16 @@ class NotesRepository implements INotesRepository {
     }
 
     async update(data: NotesDTO, id: string): Promise<void> {
-        await this.prisma.notes.update({
-            where: {
-                id,
-            },
-            data,
-        });
+        try {
+            await this.prisma.notes.update({
+                where: {
+                    id,
+                },
+                data,
+            });
+        } catch (error) {
+            throw new AppError('Nota não encontrada!', 404);
+        }
     }
 
     async delete(id: string): Promise<void> {

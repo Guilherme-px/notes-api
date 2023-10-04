@@ -5,7 +5,7 @@ import { NotesRepository } from '../../repositories/NotesRepository';
 import { note1, note2 } from '../../../test/mocks/noteMocks';
 
 describe('NotesController', () => {
-    beforeAll(async () => {
+    beforeEach(async () => {
         new NotesRepository(prismaTest);
 
         await request(app).post('/notes').send(note1);
@@ -28,11 +28,12 @@ describe('NotesController', () => {
         });
 
         it('should return an error message if no note is found', async () => {
+            await prismaTest.notes.deleteMany({});
             const response = await request(app).get('/notes');
 
             expect(response.status).toBe(404);
             expect(response.body).toHaveProperty('message');
-            expect(response.body.message).toBe('Nenhuma nota encontrada!');
+            expect(response.body.message).toBe('Nota não encontrada!');
         });
     });
 });
