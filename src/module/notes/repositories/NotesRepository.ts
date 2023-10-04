@@ -24,13 +24,13 @@ class NotesRepository implements INotesRepository {
     }
 
     async getById(id: string): Promise<Notes | null> {
-        const company = await this.prisma.notes.findUnique({
+        const note = await this.prisma.notes.findUnique({
             where: {
                 id,
             },
         });
 
-        return company;
+        return note;
     }
 
     async update(data: NotesDTO, id: string): Promise<void> {

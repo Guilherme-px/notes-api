@@ -10,10 +10,6 @@ const createNoteService = async (
         throw new AppError('Informe um titulo para a nota!', 400);
     }
 
-    if (!note.description) {
-        throw new AppError('Informe uma descrição para a nota!', 400);
-    }
-
     await notesRepository.create(note);
 };
 

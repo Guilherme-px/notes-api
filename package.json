@@ -17,7 +17,9 @@
         "dev": "nodemon --exec ts-node src/shared/infra/http/server.ts",
         "test": "dotenv -e .env.test -- jest ",
         "lint": "eslint src/**/*.ts --max-warnings=0",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "generate": "npx prisma generate",
+        "generate:dev": "dotenv -e .env.test -- npx prisma generate"
     },
     "keywords": [],
     "author": "",

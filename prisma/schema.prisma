@@ -13,7 +13,6 @@ datasource db {
 model Notes {
     id          String   @id @default(auto()) @map("_id") @db.ObjectId
     title       String
-    description String
     color       String
     is_favorite Boolean  @default(false)
     created_at  DateTime @default(now())

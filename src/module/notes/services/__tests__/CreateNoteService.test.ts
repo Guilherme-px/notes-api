@@ -22,7 +22,6 @@ describe('NoteService', () => {
                 expect.arrayContaining([
                     expect.objectContaining({
                         title: note1.title,
-                        description: note1.description,
                         color: note1.color,
                     }),
                 ])
@@ -49,24 +48,6 @@ describe('NoteService', () => {
                 const appError = error as AppErrorType;
                 expect(appError).toBeInstanceOf(AppError);
                 expect(appError.message).toBe('Informe um titulo para a nota!');
-                expect(appError.statusCode).toBe(400);
-            }
-
-            expect(notesRepository.items.length).toBe(0);
-        });
-
-        it('should throw an error when description is not informed', async () => {
-            try {
-                await createNoteService(
-                    { ...note1, description: '' },
-                    notesRepository
-                );
-            } catch (error) {
-                const appError = error as AppErrorType;
-                expect(appError).toBeInstanceOf(AppError);
-                expect(appError.message).toBe(
-                    'Informe uma descrição para a nota!'
-                );
                 expect(appError.statusCode).toBe(400);
             }
 

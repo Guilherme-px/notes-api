@@ -25,13 +25,11 @@ describe('getAllNotesService', () => {
             expect.arrayContaining([
                 expect.objectContaining({
                     title: 'Titulo da nota',
-                    description: 'descrição da nota',
                     color: 'verde',
                     is_favorite: false,
                 }),
                 expect.objectContaining({
                     title: 'Titulo da nota',
-                    description: 'descrição da nota',
                     color: 'roxo',
                     is_favorite: false,
                 }),
