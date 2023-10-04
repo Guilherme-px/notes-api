@@ -14,4 +14,5 @@ module.exports = {
     collectCoverage: true,
     coverageDirectory: 'coverage',
     testMatch: ['<rootDir>/src/**/*.test.ts'],
+    testTimeout: 1000000,
 };

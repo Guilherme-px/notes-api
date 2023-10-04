@@ -18,9 +18,9 @@ class NotesRepository implements INotesRepository {
     }
 
     async getAll(): Promise<Notes[]> {
-        const companies = await this.prisma.notes.findMany();
+        const notes = await this.prisma.notes.findMany();
 
-        return companies;
+        return notes;
     }
 
     async getById(id: string): Promise<Notes | null> {
