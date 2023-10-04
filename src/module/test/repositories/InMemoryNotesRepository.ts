@@ -1,3 +1,4 @@
+import { AppError } from '../../../shared/errors/AppError';
 import { Notes } from '../../notes/domain/Notes';
 import { NotesDTO } from '../../notes/dtos/NotesDTOs';
 import { INotesRepository } from '../../notes/repositories/INotesRepository';
@@ -25,14 +26,15 @@ class InMemoryNotesRepository implements INotesRepository {
         const note = this.items.find((item) => item['id'] === id);
         return note || null;
     }
-
     async update(note: NotesDTO, id: string): Promise<void> {
         const noteIndex = this.items.findIndex((note) => note.id === id);
 
-        if (noteIndex !== -1) {
-            const updatedNote = { ...this.items[noteIndex], ...note };
-            this.items[noteIndex] = updatedNote;
+        if (noteIndex === -1) {
+            throw new AppError('Nota não encontrada!', 404);
         }
+
+        const updatedNote = { ...this.items[noteIndex], ...note };
+        this.items[noteIndex] = updatedNote;
     }
 
     async delete(id: string): Promise<void> {
