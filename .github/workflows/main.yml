@@ -1,4 +1,4 @@
-name: Deploy notes api
+name: Deploy to Render
 
 on:
     push:
@@ -6,7 +6,7 @@ on:
             - main
 
 jobs:
-    build:
+    deploy:
         runs-on: ubuntu-latest
 
         steps:
@@ -37,13 +37,8 @@ jobs:
             - name: Build
               run: npm run build
 
-    deploy:
-        needs: build
-        runs-on: ubuntu-latest
-
-        steps:
             - name: Deploy to Render
-              uses: renderapp/github-action@v0.4.2
+              uses: renderapp/render-deploy-github-action@v1
               with:
                   renderToken: ${{ secrets.RENDER_TOKEN }}
                   renderFile: render.yaml
