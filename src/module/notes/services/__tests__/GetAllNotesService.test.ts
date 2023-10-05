@@ -47,4 +47,27 @@ describe('getAllNotesService', () => {
             expect(appError.statusCode).toBe(404);
         }
     });
+
+    it('should return all notes from the repository', async () => {
+        const notes = await getAllNotesService(
+            notesRepository,
+            'Titulo da nota'
+        );
+
+        expect(notes).toHaveLength(2);
+        expect(notes).toEqual(
+            expect.arrayContaining([
+                expect.objectContaining({
+                    title: 'Titulo da nota',
+                    color: 'verde',
+                    is_favorite: false,
+                }),
+                expect.objectContaining({
+                    title: 'Titulo da nota',
+                    color: 'roxo',
+                    is_favorite: false,
+                }),
+            ])
+        );
+    });
 });

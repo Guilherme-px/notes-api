@@ -8,9 +8,11 @@ const getAllNotesController = async (
     res: Response,
     next: NextFunction
 ) => {
+    const searchTerm: string = (req.query.search as string) || '';
     const notesRepository = new NotesRepository();
+
     try {
-        const notes = await getAllNotesService(notesRepository);
+        const notes = await getAllNotesService(notesRepository, searchTerm);
 
         return res.status(200).json(notes);
     } catch (error) {

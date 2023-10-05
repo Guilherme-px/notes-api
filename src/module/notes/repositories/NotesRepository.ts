@@ -18,8 +18,20 @@ class NotesRepository implements INotesRepository {
         });
     }
 
-    async getAll(): Promise<Notes[]> {
-        const notes = await this.prisma.notes.findMany();
+    async getAll(searchTerm?: string): Promise<Notes[]> {
+        let notes: Notes[];
+
+        if (searchTerm) {
+            notes = await this.prisma.notes.findMany({
+                where: {
+                    title: {
+                        contains: searchTerm,
+                    },
+                },
+            });
+        } else {
+            notes = await this.prisma.notes.findMany();
+        }
 
         return notes;
     }

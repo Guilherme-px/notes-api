@@ -18,7 +18,15 @@ class InMemoryNotesRepository implements INotesRepository {
         });
     }
 
-    async getAll(): Promise<Notes[]> {
+    async getAll(searchTerm?: string): Promise<Notes[]> {
+        if (searchTerm) {
+            const filteredNotes = this.items.filter((note) => {
+                return note.title === searchTerm;
+            });
+
+            return filteredNotes;
+        }
+
         return this.items;
     }
 
