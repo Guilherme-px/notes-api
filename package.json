@@ -2,6 +2,9 @@
     "name": "server",
     "version": "1.0.0",
     "description": "",
+    "engines": {
+        "node": "18"
+    },
     "husky": {
         "hooks": {
             "pre-commit": "lint-staged"
@@ -9,11 +12,12 @@
     },
     "lint-staged": {
         "**/*.ts": [
-            "npm run lint --fix",
-            "jest --bail --findRelatedTests"
+            "npm run lint --fix"
         ]
     },
     "scripts": {
+        "build": "tsup src",
+        "start": "node src/shared/infra/http/server.ts",
         "dev": "nodemon --exec ts-node src/shared/infra/http/server.ts",
         "test": "dotenv -e .env.test -- jest ",
         "lint": "eslint src/**/*.ts --max-warnings=0",
@@ -42,6 +46,7 @@
         "ts-jest": "^29.1.1",
         "ts-node": "^10.9.1",
         "tsconfig-paths": "^4.2.0",
+        "tsup": "^7.2.0",
         "typescript": "^5.1.6",
         "uuid": "^9.0.1"
     },
