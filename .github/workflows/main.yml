@@ -38,7 +38,8 @@ jobs:
               run: npm run build
 
             - name: Deploy to Render
-              uses: renderapp/render-deploy-github-action@v1
+              uses: johnbeynon/render-deploy-action@v0.0.8
               with:
-                  renderToken: ${{ secrets.RENDER_TOKEN }}
+                  service-id: ${{ secrets.SERVICE_ID }}
+                  api-key: ${{ secrets.RENDER_API_KEY }}
                   renderFile: render.yaml
