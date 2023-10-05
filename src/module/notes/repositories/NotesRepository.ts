@@ -43,7 +43,7 @@ class NotesRepository implements INotesRepository {
             },
         });
 
-        return note;
+        return note || null;
     }
 
     async update(data: NotesDTO, id: string): Promise<void> {
