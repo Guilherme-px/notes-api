@@ -1,0 +1,10 @@
+services:
+  - name: notes-api
+    type: web
+    buildCommand: |
+      npm install
+      npm run build
+    startCommand: npm run start
+    env:
+      - key: NODE_ENV
+        value: production
