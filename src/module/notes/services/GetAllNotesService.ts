@@ -7,7 +7,7 @@ const getAllNotesService = async (
 ) => {
     const notes = await notesRepository.getAll(searchTerm);
 
-    if (!notes || notes.length === 0) {
+    if (!notes) {
         throw new AppError('Nota não encontrada!', 404);
     }
 
