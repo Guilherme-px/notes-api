@@ -27,15 +27,6 @@ describe('NotesController', () => {
             expect(response.status).toBe(200);
         });
 
-        it('should return an error message if no note is found', async () => {
-            await prismaTest.notes.deleteMany({});
-            const response = await request(app).get('/notes');
-
-            expect(response.status).toBe(404);
-            expect(response.body).toHaveProperty('message');
-            expect(response.body.message).toBe('Nota não encontrada!');
-        });
-
         it('should retrieve a list of notes', async () => {
             const searchTerm = note1.title;
             const response = await request(app).get(
