@@ -2,6 +2,10 @@
 
 A aplicação foi desenvolvida com framework express e a linguagem typescript usando jest para a criação dos testes unitários e de integração, prisma e mongodb para acessar o banco salvar os dados, foi usado também eslint, prettier com husky e lint-staged para padronizar o código e controlar os commits para que não sejam feitos commits fora das regras definidas para padronização, foi usado o design pattern DDD com os princípios SOLID para arquiteturar a aplicação, também sendo utilizado os principios do InMemoryTestDatabase do martinfowler para executar os testes unitarios sem ficar gerando mocks de funções para os testes, falando nos testes a api foi desenvolvida seguindo o TDD.
 
+## Acessar API
+
+https://nodedeploy-wq65.onrender.com
+
 ## Índice
 
 1. [Introdução](#introdução)

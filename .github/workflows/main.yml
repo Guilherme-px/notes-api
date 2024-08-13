@@ -25,10 +25,10 @@ jobs:
             - name: prisma generate
               run: npm run generate
 
-            - name: prisma generate dev
+            - name: prisma generate test
               env:
                   DATABASE_URL: ${{ secrets.DATABASE_URL_TEST }}
-              run: npm run generate:dev
+              run: npm run generate:test
 
             - name: Run tests (Dev)
               env:
